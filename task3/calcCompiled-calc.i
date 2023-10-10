@@ -1,9 +1,9 @@
-# 0 "main2.c"
+# 0 "calc.c"
 # 0 "<built-in>"
 # 0 "<command-line>"
 # 1 "/usr/include/stdc-predef.h" 1 3 4
 # 0 "<command-line>" 2
-# 1 "main2.c"
+# 1 "calc.c"
 # 1 "/usr/include/stdio.h" 1 3 4
 # 27 "/usr/include/stdio.h" 3 4
 # 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
@@ -734,7 +734,7 @@ extern int __uflow (FILE *);
 extern int __overflow (FILE *, int);
 # 902 "/usr/include/stdio.h" 3 4
 
-# 2 "main2.c" 2
+# 2 "calc.c" 2
 # 1 "/usr/include/stdlib.h" 1 3 4
 # 26 "/usr/include/stdlib.h" 3 4
 # 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
@@ -1824,26 +1824,46 @@ extern int getloadavg (double __loadavg[], int __nelem)
 # 1024 "/usr/include/stdlib.h" 2 3 4
 # 1035 "/usr/include/stdlib.h" 3 4
 
-# 3 "main2.c" 2
+# 3 "calc.c" 2
 
 
-# 4 "main2.c"
+# 4 "calc.c"
 int main(int args, char * argv[]) {
- int A = atoi(argv[1]);
 
-
-
-    int B = atoi(argv[2]);
-
-
-
-
-    printf("Smaller number: ");
-    if (A > B)
+    char table[3];
+    for (int i = 0; i < args; i++)
     {
-        printf("%d", B);
-    }else{
-        printf("%d", A);
+         table[i] = *argv[i];
+
+
     }
-    printf("\n");
+    double A = atof(argv[1]);
+    double B = atof(argv[3]);
+
+    printf("%c \n", table[2]);
+
+
+
+    if(table[2] == '+')
+    {
+        printf("%.2f + %.2f = %.2f\n", A, B, (A + B));
+        return 0;
+    }else if(table[2] == '-')
+    {
+        printf("%.2f - %.2f = %.2f\n", A, B, (A - B));
+        return 0;
+    }else if(table[2] == 'C')
+    {
+        printf("%.2f * %.2f = %.2f\n", A, B, (double)(A*B));
+        return 0;
+    }else if(table[2] == '/')
+    {
+        printf("%.2f / %.2f = %.2f\n", A, B, (double)(A/B));
+        return 0;
+    }else
+    {
+        printf("ERROR");
+        return 0;
+    }
+
 }

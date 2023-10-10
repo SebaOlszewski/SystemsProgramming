@@ -2,9 +2,13 @@
 #include <stdlib.h>
 
 int main(int args, char * argv[]) {
-	
+	int A = atoi(argv[1]);
+    //printf("Enter A: ");
+    //scanf("%d", &A);
 
-    for (int i = 0; i < N; i++)
+    int B = atoi(argv[2]);
+    //printf("Enter B: ");
+    //scanf("%d", &B);
 
 
     printf("Smaller number: ");

@@ -2,21 +2,13 @@
 #include <stdlib.h>
 
 int main(int args, char * argv[]) {
-	int A = atoi(argv[1]);
-    //printf("Enter A: ");
-    //scanf("%d", &A);
-
-    int B = atoi(argv[2]);
-    //printf("Enter B: ");
-    //scanf("%d", &B);
-
-
-    printf("Smaller number: ");
-    if (A > B)
+	
+    float sum = 0;
+    for(int i = 1; i < args; i++)
     {
-        printf("%d", B);
-    }else{
-        printf("%d", A);
+        //int temp = atoi(argv[i]);
+        sum = sum + atoi(argv[i]);
+        //printf("%d \n", temp);
     }
-    printf("\n");
+    printf("%.2f \n", sum / (args - 1));
 }

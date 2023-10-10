@@ -1,10 +1,8 @@
 	.file	"main2.c"
 	.text
 	.section	.rodata
-.LC0:
-	.string	"Smaller number: "
 .LC1:
-	.string	"%d"
+	.string	"%.2f \n"
 	.text
 	.globl	main
 	.type	main, @function
@@ -20,42 +18,43 @@ main:
 	subq	$32, %rsp
 	movl	%edi, -20(%rbp)
 	movq	%rsi, -32(%rbp)
-	movq	-32(%rbp), %rax
-	addq	$8, %rax
-	movq	(%rax), %rax
-	movq	%rax, %rdi
-	call	atoi@PLT
-	movl	%eax, -8(%rbp)
-	movq	-32(%rbp), %rax
-	addq	$16, %rax
-	movq	(%rax), %rax
-	movq	%rax, %rdi
-	call	atoi@PLT
-	movl	%eax, -4(%rbp)
-	leaq	.LC0(%rip), %rax
-	movq	%rax, %rdi
-	movl	$0, %eax
-	call	printf@PLT
-	movl	-8(%rbp), %eax
-	cmpl	-4(%rbp), %eax
-	jle	.L2
-	movl	-4(%rbp), %eax
-	movl	%eax, %esi
-	leaq	.LC1(%rip), %rax
-	movq	%rax, %rdi
-	movl	$0, %eax
-	call	printf@PLT
-	jmp	.L3
-.L2:
-	movl	-8(%rbp), %eax
-	movl	%eax, %esi
-	leaq	.LC1(%rip), %rax
-	movq	%rax, %rdi
-	movl	$0, %eax
-	call	printf@PLT
+	pxor	%xmm0, %xmm0
+	movss	%xmm0, -8(%rbp)
+	movl	$1, -4(%rbp)
+	jmp	.L2
 .L3:
-	movl	$10, %edi
-	call	putchar@PLT
+	movl	-4(%rbp), %eax
+	cltq
+	leaq	0(,%rax,8), %rdx
+	movq	-32(%rbp), %rax
+	addq	%rdx, %rax
+	movq	(%rax), %rax
+	movq	%rax, %rdi
+	call	atoi@PLT
+	pxor	%xmm0, %xmm0
+	cvtsi2ssl	%eax, %xmm0
+	movss	-8(%rbp), %xmm1
+	addss	%xmm1, %xmm0
+	movss	%xmm0, -8(%rbp)
+	addl	$1, -4(%rbp)
+.L2:
+	movl	-4(%rbp), %eax
+	cmpl	-20(%rbp), %eax
+	jl	.L3
+	movl	-20(%rbp), %eax
+	subl	$1, %eax
+	pxor	%xmm1, %xmm1
+	cvtsi2ssl	%eax, %xmm1
+	movss	-8(%rbp), %xmm0
+	divss	%xmm1, %xmm0
+	pxor	%xmm2, %xmm2
+	cvtss2sd	%xmm0, %xmm2
+	movq	%xmm2, %rax
+	movq	%rax, %xmm0
+	leaq	.LC1(%rip), %rax
+	movq	%rax, %rdi
+	movl	$1, %eax
+	call	printf@PLT
 	movl	$0, %eax
 	leave
 	.cfi_def_cfa 7, 8
