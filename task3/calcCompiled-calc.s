@@ -107,7 +107,7 @@ main:
 	jmp	.L9
 .L6:
 	movzbl	-9(%rbp), %eax
-	cmpb	$67, %al
+	cmpb	$42, %al
 	jne	.L7
 	movsd	-32(%rbp), %xmm0
 	movapd	%xmm0, %xmm1

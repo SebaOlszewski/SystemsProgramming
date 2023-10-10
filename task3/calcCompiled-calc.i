@@ -1852,9 +1852,9 @@ int main(int args, char * argv[]) {
     {
         printf("%.2f - %.2f = %.2f\n", A, B, (A - B));
         return 0;
-    }else if(table[2] == 'C')
+    }else if(table[2] == '*')
     {
-        printf("%.2f * %.2f = %.2f\n", A, B, (double)(A*B));
+        printf("%.2f * %.2f = %.2f\n", A, B, (A*B));
         return 0;
     }else if(table[2] == '/')
     {
