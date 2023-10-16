@@ -1825,45 +1825,342 @@ extern int getloadavg (double __loadavg[], int __nelem)
 # 1035 "/usr/include/stdlib.h" 3 4
 
 # 3 "calc.c" 2
+# 1 "/usr/include/ctype.h" 1 3 4
+# 28 "/usr/include/ctype.h" 3 4
+
+# 46 "/usr/include/ctype.h" 3 4
+enum
+{
+  _ISupper = ((0) < 8 ? ((1 << (0)) << 8) : ((1 << (0)) >> 8)),
+  _ISlower = ((1) < 8 ? ((1 << (1)) << 8) : ((1 << (1)) >> 8)),
+  _ISalpha = ((2) < 8 ? ((1 << (2)) << 8) : ((1 << (2)) >> 8)),
+  _ISdigit = ((3) < 8 ? ((1 << (3)) << 8) : ((1 << (3)) >> 8)),
+  _ISxdigit = ((4) < 8 ? ((1 << (4)) << 8) : ((1 << (4)) >> 8)),
+  _ISspace = ((5) < 8 ? ((1 << (5)) << 8) : ((1 << (5)) >> 8)),
+  _ISprint = ((6) < 8 ? ((1 << (6)) << 8) : ((1 << (6)) >> 8)),
+  _ISgraph = ((7) < 8 ? ((1 << (7)) << 8) : ((1 << (7)) >> 8)),
+  _ISblank = ((8) < 8 ? ((1 << (8)) << 8) : ((1 << (8)) >> 8)),
+  _IScntrl = ((9) < 8 ? ((1 << (9)) << 8) : ((1 << (9)) >> 8)),
+  _ISpunct = ((10) < 8 ? ((1 << (10)) << 8) : ((1 << (10)) >> 8)),
+  _ISalnum = ((11) < 8 ? ((1 << (11)) << 8) : ((1 << (11)) >> 8))
+};
+# 79 "/usr/include/ctype.h" 3 4
+extern const unsigned short int **__ctype_b_loc (void)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
+extern const __int32_t **__ctype_tolower_loc (void)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
+extern const __int32_t **__ctype_toupper_loc (void)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
+# 108 "/usr/include/ctype.h" 3 4
+extern int isalnum (int) __attribute__ ((__nothrow__ , __leaf__));
+extern int isalpha (int) __attribute__ ((__nothrow__ , __leaf__));
+extern int iscntrl (int) __attribute__ ((__nothrow__ , __leaf__));
+extern int isdigit (int) __attribute__ ((__nothrow__ , __leaf__));
+extern int islower (int) __attribute__ ((__nothrow__ , __leaf__));
+extern int isgraph (int) __attribute__ ((__nothrow__ , __leaf__));
+extern int isprint (int) __attribute__ ((__nothrow__ , __leaf__));
+extern int ispunct (int) __attribute__ ((__nothrow__ , __leaf__));
+extern int isspace (int) __attribute__ ((__nothrow__ , __leaf__));
+extern int isupper (int) __attribute__ ((__nothrow__ , __leaf__));
+extern int isxdigit (int) __attribute__ ((__nothrow__ , __leaf__));
 
 
-# 4 "calc.c"
-int main(int args, char * argv[]) {
 
-    char table[3];
-    for (int i = 0; i < args; i++)
+extern int tolower (int __c) __attribute__ ((__nothrow__ , __leaf__));
+
+
+extern int toupper (int __c) __attribute__ ((__nothrow__ , __leaf__));
+
+
+
+
+extern int isblank (int) __attribute__ ((__nothrow__ , __leaf__));
+# 142 "/usr/include/ctype.h" 3 4
+extern int isascii (int __c) __attribute__ ((__nothrow__ , __leaf__));
+
+
+
+extern int toascii (int __c) __attribute__ ((__nothrow__ , __leaf__));
+
+
+
+extern int _toupper (int) __attribute__ ((__nothrow__ , __leaf__));
+extern int _tolower (int) __attribute__ ((__nothrow__ , __leaf__));
+# 237 "/usr/include/ctype.h" 3 4
+# 1 "/usr/include/x86_64-linux-gnu/bits/types/locale_t.h" 1 3 4
+# 22 "/usr/include/x86_64-linux-gnu/bits/types/locale_t.h" 3 4
+# 1 "/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h" 1 3 4
+# 27 "/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h" 3 4
+struct __locale_struct
+{
+
+  struct __locale_data *__locales[13];
+
+
+  const unsigned short int *__ctype_b;
+  const int *__ctype_tolower;
+  const int *__ctype_toupper;
+
+
+  const char *__names[13];
+};
+
+typedef struct __locale_struct *__locale_t;
+# 23 "/usr/include/x86_64-linux-gnu/bits/types/locale_t.h" 2 3 4
+
+typedef __locale_t locale_t;
+# 238 "/usr/include/ctype.h" 2 3 4
+# 251 "/usr/include/ctype.h" 3 4
+extern int isalnum_l (int, locale_t) __attribute__ ((__nothrow__ , __leaf__));
+extern int isalpha_l (int, locale_t) __attribute__ ((__nothrow__ , __leaf__));
+extern int iscntrl_l (int, locale_t) __attribute__ ((__nothrow__ , __leaf__));
+extern int isdigit_l (int, locale_t) __attribute__ ((__nothrow__ , __leaf__));
+extern int islower_l (int, locale_t) __attribute__ ((__nothrow__ , __leaf__));
+extern int isgraph_l (int, locale_t) __attribute__ ((__nothrow__ , __leaf__));
+extern int isprint_l (int, locale_t) __attribute__ ((__nothrow__ , __leaf__));
+extern int ispunct_l (int, locale_t) __attribute__ ((__nothrow__ , __leaf__));
+extern int isspace_l (int, locale_t) __attribute__ ((__nothrow__ , __leaf__));
+extern int isupper_l (int, locale_t) __attribute__ ((__nothrow__ , __leaf__));
+extern int isxdigit_l (int, locale_t) __attribute__ ((__nothrow__ , __leaf__));
+
+extern int isblank_l (int, locale_t) __attribute__ ((__nothrow__ , __leaf__));
+
+
+
+extern int __tolower_l (int __c, locale_t __l) __attribute__ ((__nothrow__ , __leaf__));
+extern int tolower_l (int __c, locale_t __l) __attribute__ ((__nothrow__ , __leaf__));
+
+
+extern int __toupper_l (int __c, locale_t __l) __attribute__ ((__nothrow__ , __leaf__));
+extern int toupper_l (int __c, locale_t __l) __attribute__ ((__nothrow__ , __leaf__));
+# 327 "/usr/include/ctype.h" 3 4
+
+# 4 "calc.c" 2
+
+
+# 5 "calc.c"
+void solve(double A, char sign, double B)
+     {
+
+
+
+
+            switch (sign){
+                case '+':
+                    printf("%.2f + %.2f = %.2f\n", A, B, A + B);
+                break;
+                case '-':
+                    printf("%.2f - %.2f = %.2f\n", A, B, A - B);
+                break;
+
+                case '*':
+                    printf("%.2f * %.2f = %.2f\n", A, B, A * B);
+                break;
+
+                case '/':
+                    printf("%.2f / %.2f = %.2f\n", A, B, A / B);
+                break;
+                default :
+                    printf("ERROR \n");
+            }
+# 41 "calc.c"
+     }
+
+
+
+int main(int argc, char * argv[]) {
+
+
+    if(argc < 3 || argc > 4)
     {
-         table[i] = *argv[i];
+        printf("ERROR \n");
+        return 0;
+    }
+    else if(argc == 3)
+    {
+
+        if (
+# 56 "calc.c" 3 4
+           ((*__ctype_b_loc ())[(int) ((
+# 56 "calc.c"
+           argv[1][0]
+# 56 "calc.c" 3 4
+           ))] & (unsigned short int) _ISdigit) 
+# 56 "calc.c"
+                               && 
+# 56 "calc.c" 3 4
+                                  ((*__ctype_b_loc ())[(int) ((
+# 56 "calc.c"
+                                  argv[2][0]
+# 56 "calc.c" 3 4
+                                  ))] & (unsigned short int) _ISdigit)
+# 56 "calc.c"
+                                                     )
+        {
+            printf("Missing operator \n");
+        }else if (
+# 59 "calc.c" 3 4
+                 ((*__ctype_b_loc ())[(int) ((
+# 59 "calc.c"
+                 argv[1][0]
+# 59 "calc.c" 3 4
+                 ))] & (unsigned short int) _ISdigit) 
+# 59 "calc.c"
+                                     && !(
+# 59 "calc.c" 3 4
+                                          ((*__ctype_b_loc ())[(int) ((
+# 59 "calc.c"
+                                          argv[2][0]
+# 59 "calc.c" 3 4
+                                          ))] & (unsigned short int) _ISdigit)
+# 59 "calc.c"
+                                                             ))
+        {
+            printf("Missing number\n");
+        }else if (!(
+# 62 "calc.c" 3 4
+                   ((*__ctype_b_loc ())[(int) ((
+# 62 "calc.c"
+                   argv[1][0]
+# 62 "calc.c" 3 4
+                   ))] & (unsigned short int) _ISdigit)
+# 62 "calc.c"
+                                      ) && 
+# 62 "calc.c" 3 4
+                                           ((*__ctype_b_loc ())[(int) ((
+# 62 "calc.c"
+                                           argv[2][0]
+# 62 "calc.c" 3 4
+                                           ))] & (unsigned short int) _ISdigit)
+# 62 "calc.c"
+                                                              )
+        {
+            printf("Missing number\n");
+        }else
+        {
+            printf("ERROR: No number\n");
+        }
+
+       return 0;
+    }
+
+    else if (argc == 4)
+    {
+
+
+        if((argv[2][0] == '+' || argv[2][0] == '-' || argv[2][0] == '*' || argv[2][0] == '/'))
+        {
+
+            if (
+# 80 "calc.c" 3 4
+               ((*__ctype_b_loc ())[(int) ((
+# 80 "calc.c"
+               argv[1][0]
+# 80 "calc.c" 3 4
+               ))] & (unsigned short int) _ISdigit) 
+# 80 "calc.c"
+                                   && 
+# 80 "calc.c" 3 4
+                                      ((*__ctype_b_loc ())[(int) ((
+# 80 "calc.c"
+                                      argv[3][0]
+# 80 "calc.c" 3 4
+                                      ))] & (unsigned short int) _ISdigit)
+# 80 "calc.c"
+                                                         )
+            {
+                double A = atof(argv[1]);
+                double B = atof(argv[3]);
+
+                solve(A, argv[2][0], B);
+
+            }else if (argv[1][0] == '-' && 
+# 87 "calc.c" 3 4
+                                          ((*__ctype_b_loc ())[(int) ((
+# 87 "calc.c"
+                                          argv[1][1]
+# 87 "calc.c" 3 4
+                                          ))] & (unsigned short int) _ISdigit) 
+# 87 "calc.c"
+                                                              && 
+# 87 "calc.c" 3 4
+                                                                 ((*__ctype_b_loc ())[(int) ((
+# 87 "calc.c"
+                                                                 argv[3][0]
+# 87 "calc.c" 3 4
+                                                                 ))] & (unsigned short int) _ISdigit)
+# 87 "calc.c"
+                                                                                    )
+            {
+
+                double A = atof(argv[1]);
+                double B = atof(argv[3]);
+
+                solve(A, argv[2][0], B);
+
+            }else if (
+# 95 "calc.c" 3 4
+                     ((*__ctype_b_loc ())[(int) ((
+# 95 "calc.c"
+                     argv[1][0]
+# 95 "calc.c" 3 4
+                     ))] & (unsigned short int) _ISdigit) 
+# 95 "calc.c"
+                                         && argv[3][0] == '-' && 
+# 95 "calc.c" 3 4
+                                                                 ((*__ctype_b_loc ())[(int) ((
+# 95 "calc.c"
+                                                                 argv[3][1]
+# 95 "calc.c" 3 4
+                                                                 ))] & (unsigned short int) _ISdigit)
+# 95 "calc.c"
+                                                                                    )
+            {
+
+                double A = atof(argv[1]);
+                double B = atof(argv[3]);
+
+                solve(A, argv[2][0], B);
+
+
+            }else if (argv[1][0] == '-' && 
+# 104 "calc.c" 3 4
+                                          ((*__ctype_b_loc ())[(int) ((
+# 104 "calc.c"
+                                          argv[1][1]
+# 104 "calc.c" 3 4
+                                          ))] & (unsigned short int) _ISdigit) 
+# 104 "calc.c"
+                                                              && argv[3][0] == '-' && 
+# 104 "calc.c" 3 4
+                                                                                      ((*__ctype_b_loc ())[(int) ((
+# 104 "calc.c"
+                                                                                      argv[3][1]
+# 104 "calc.c" 3 4
+                                                                                      ))] & (unsigned short int) _ISdigit)
+# 104 "calc.c"
+                                                                                                         )
+            {
+
+                double A = atof(argv[1]);
+                double B = atof(argv[3]);
+                solve(A, argv[2][0], B);
+            }else
+            {
+                printf("Missing number! \n");
+            }
+        }else
+        {
+            printf("Wrong operator! \n");
+        }
+
+
+
+
+
 
 
     }
-    double A = atof(argv[1]);
-    double B = atof(argv[3]);
 
-    printf("%c \n", table[2]);
-
-
-
-    if(table[2] == '+')
-    {
-        printf("%.2f + %.2f = %.2f\n", A, B, (A + B));
-        return 0;
-    }else if(table[2] == '-')
-    {
-        printf("%.2f - %.2f = %.2f\n", A, B, (A - B));
-        return 0;
-    }else if(table[2] == '*')
-    {
-        printf("%.2f * %.2f = %.2f\n", A, B, (A*B));
-        return 0;
-    }else if(table[2] == '/')
-    {
-        printf("%.2f / %.2f = %.2f\n", A, B, (double)(A/B));
-        return 0;
-    }else
-    {
-        printf("ERROR");
-        return 0;
-    }
 
 }
