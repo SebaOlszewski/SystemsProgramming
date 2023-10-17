@@ -45,9 +45,13 @@ void solve(double A, char sign, double B)
 int main(int argc, char * argv[]) {
 	
 
-    if(argc < 3 || argc > 4)
+    if(argc < 3)
     {
-        printf("ERROR \n");
+        printf("To little arguments!\n");
+        return 0;
+    }else if(argc > 4)
+    {
+        printf("To many arguments!\n");
         return 0;
     }
     else if(argc == 3)
@@ -79,6 +83,7 @@ int main(int argc, char * argv[]) {
             
             if (isdigit(argv[1][0]) && isdigit(argv[3][0]))
             {
+                // A + B
                 double A = atof(argv[1]);
                 double B = atof(argv[3]);
 
@@ -103,7 +108,7 @@ int main(int argc, char * argv[]) {
 
             }else if (argv[1][0] == '-' && isdigit(argv[1][1]) && argv[3][0] == '-' && isdigit(argv[3][1])) 
             {
-                // A + -B
+                // -A + -B
                 double A = atof(argv[1]);
                 double B = atof(argv[3]);
                 solve(A, argv[2][0], B);

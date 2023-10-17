@@ -1971,68 +1971,72 @@ void solve(double A, char sign, double B)
 int main(int argc, char * argv[]) {
 
 
-    if(argc < 3 || argc > 4)
+    if(argc < 3)
     {
-        printf("ERROR \n");
+        printf("To little arguments!\n");
+        return 0;
+    }else if(argc > 4)
+    {
+        printf("To many arguments!\n");
         return 0;
     }
     else if(argc == 3)
     {
 
         if (
-# 56 "calc.c" 3 4
+# 60 "calc.c" 3 4
            ((*__ctype_b_loc ())[(int) ((
-# 56 "calc.c"
+# 60 "calc.c"
            argv[1][0]
-# 56 "calc.c" 3 4
+# 60 "calc.c" 3 4
            ))] & (unsigned short int) _ISdigit) 
-# 56 "calc.c"
+# 60 "calc.c"
                                && 
-# 56 "calc.c" 3 4
+# 60 "calc.c" 3 4
                                   ((*__ctype_b_loc ())[(int) ((
-# 56 "calc.c"
+# 60 "calc.c"
                                   argv[2][0]
-# 56 "calc.c" 3 4
+# 60 "calc.c" 3 4
                                   ))] & (unsigned short int) _ISdigit)
-# 56 "calc.c"
+# 60 "calc.c"
                                                      )
         {
             printf("Missing operator \n");
         }else if (
-# 59 "calc.c" 3 4
+# 63 "calc.c" 3 4
                  ((*__ctype_b_loc ())[(int) ((
-# 59 "calc.c"
+# 63 "calc.c"
                  argv[1][0]
-# 59 "calc.c" 3 4
+# 63 "calc.c" 3 4
                  ))] & (unsigned short int) _ISdigit) 
-# 59 "calc.c"
+# 63 "calc.c"
                                      && !(
-# 59 "calc.c" 3 4
+# 63 "calc.c" 3 4
                                           ((*__ctype_b_loc ())[(int) ((
-# 59 "calc.c"
+# 63 "calc.c"
                                           argv[2][0]
-# 59 "calc.c" 3 4
+# 63 "calc.c" 3 4
                                           ))] & (unsigned short int) _ISdigit)
-# 59 "calc.c"
+# 63 "calc.c"
                                                              ))
         {
             printf("Missing number\n");
         }else if (!(
-# 62 "calc.c" 3 4
+# 66 "calc.c" 3 4
                    ((*__ctype_b_loc ())[(int) ((
-# 62 "calc.c"
+# 66 "calc.c"
                    argv[1][0]
-# 62 "calc.c" 3 4
+# 66 "calc.c" 3 4
                    ))] & (unsigned short int) _ISdigit)
-# 62 "calc.c"
+# 66 "calc.c"
                                       ) && 
-# 62 "calc.c" 3 4
+# 66 "calc.c" 3 4
                                            ((*__ctype_b_loc ())[(int) ((
-# 62 "calc.c"
+# 66 "calc.c"
                                            argv[2][0]
-# 62 "calc.c" 3 4
+# 66 "calc.c" 3 4
                                            ))] & (unsigned short int) _ISdigit)
-# 62 "calc.c"
+# 66 "calc.c"
                                                               )
         {
             printf("Missing number\n");
@@ -2052,44 +2056,45 @@ int main(int argc, char * argv[]) {
         {
 
             if (
-# 80 "calc.c" 3 4
+# 84 "calc.c" 3 4
                ((*__ctype_b_loc ())[(int) ((
-# 80 "calc.c"
+# 84 "calc.c"
                argv[1][0]
-# 80 "calc.c" 3 4
+# 84 "calc.c" 3 4
                ))] & (unsigned short int) _ISdigit) 
-# 80 "calc.c"
+# 84 "calc.c"
                                    && 
-# 80 "calc.c" 3 4
+# 84 "calc.c" 3 4
                                       ((*__ctype_b_loc ())[(int) ((
-# 80 "calc.c"
+# 84 "calc.c"
                                       argv[3][0]
-# 80 "calc.c" 3 4
+# 84 "calc.c" 3 4
                                       ))] & (unsigned short int) _ISdigit)
-# 80 "calc.c"
+# 84 "calc.c"
                                                          )
             {
+
                 double A = atof(argv[1]);
                 double B = atof(argv[3]);
 
                 solve(A, argv[2][0], B);
 
             }else if (argv[1][0] == '-' && 
-# 87 "calc.c" 3 4
+# 92 "calc.c" 3 4
                                           ((*__ctype_b_loc ())[(int) ((
-# 87 "calc.c"
+# 92 "calc.c"
                                           argv[1][1]
-# 87 "calc.c" 3 4
+# 92 "calc.c" 3 4
                                           ))] & (unsigned short int) _ISdigit) 
-# 87 "calc.c"
+# 92 "calc.c"
                                                               && 
-# 87 "calc.c" 3 4
+# 92 "calc.c" 3 4
                                                                  ((*__ctype_b_loc ())[(int) ((
-# 87 "calc.c"
+# 92 "calc.c"
                                                                  argv[3][0]
-# 87 "calc.c" 3 4
+# 92 "calc.c" 3 4
                                                                  ))] & (unsigned short int) _ISdigit)
-# 87 "calc.c"
+# 92 "calc.c"
                                                                                     )
             {
 
@@ -2099,21 +2104,21 @@ int main(int argc, char * argv[]) {
                 solve(A, argv[2][0], B);
 
             }else if (
-# 95 "calc.c" 3 4
+# 100 "calc.c" 3 4
                      ((*__ctype_b_loc ())[(int) ((
-# 95 "calc.c"
+# 100 "calc.c"
                      argv[1][0]
-# 95 "calc.c" 3 4
+# 100 "calc.c" 3 4
                      ))] & (unsigned short int) _ISdigit) 
-# 95 "calc.c"
+# 100 "calc.c"
                                          && argv[3][0] == '-' && 
-# 95 "calc.c" 3 4
+# 100 "calc.c" 3 4
                                                                  ((*__ctype_b_loc ())[(int) ((
-# 95 "calc.c"
+# 100 "calc.c"
                                                                  argv[3][1]
-# 95 "calc.c" 3 4
+# 100 "calc.c" 3 4
                                                                  ))] & (unsigned short int) _ISdigit)
-# 95 "calc.c"
+# 100 "calc.c"
                                                                                     )
             {
 
@@ -2124,21 +2129,21 @@ int main(int argc, char * argv[]) {
 
 
             }else if (argv[1][0] == '-' && 
-# 104 "calc.c" 3 4
+# 109 "calc.c" 3 4
                                           ((*__ctype_b_loc ())[(int) ((
-# 104 "calc.c"
+# 109 "calc.c"
                                           argv[1][1]
-# 104 "calc.c" 3 4
+# 109 "calc.c" 3 4
                                           ))] & (unsigned short int) _ISdigit) 
-# 104 "calc.c"
+# 109 "calc.c"
                                                               && argv[3][0] == '-' && 
-# 104 "calc.c" 3 4
+# 109 "calc.c" 3 4
                                                                                       ((*__ctype_b_loc ())[(int) ((
-# 104 "calc.c"
+# 109 "calc.c"
                                                                                       argv[3][1]
-# 104 "calc.c" 3 4
+# 109 "calc.c" 3 4
                                                                                       ))] & (unsigned short int) _ISdigit)
-# 104 "calc.c"
+# 109 "calc.c"
                                                                                                          )
             {
 

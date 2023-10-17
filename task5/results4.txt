@@ -1,0 +1,2 @@
+   text	   data	    bss	    dec	    hex	filename
+   1230	    560	      8	   1798	    706	size4

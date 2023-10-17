@@ -52,16 +52,18 @@ solve:
 	.size	solve, .-solve
 	.section	.rodata
 .LC2:
-	.string	"ERROR "
+	.string	"To little arguments!"
 .LC3:
-	.string	"Missing operator "
+	.string	"To many arguments!"
 .LC4:
-	.string	"Missing number"
+	.string	"Missing operator "
 .LC5:
-	.string	"ERROR: No number"
+	.string	"Missing number"
 .LC6:
-	.string	"Missing number! "
+	.string	"ERROR: No number"
 .LC7:
+	.string	"Missing number! "
+.LC8:
 	.string	"Wrong operator! "
 	.text
 	.globl	main
@@ -79,16 +81,21 @@ main:
 	movl	%edi, -68(%rbp)
 	movq	%rsi, -80(%rbp)
 	cmpl	$2, -68(%rbp)
-	jle	.L6
-	cmpl	$4, -68(%rbp)
-	jle	.L7
-.L6:
+	jg	.L6
 	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
 	movl	$0, %eax
-	jmp	.L8
-.L7:
+	jmp	.L7
+.L6:
+	cmpl	$4, -68(%rbp)
+	jle	.L8
+	leaq	.LC3(%rip), %rax
+	movq	%rax, %rdi
+	call	puts@PLT
+	movl	$0, %eax
+	jmp	.L7
+.L8:
 	cmpl	$3, -68(%rbp)
 	jne	.L9
 	call	__ctype_b_loc@PLT
@@ -119,7 +126,7 @@ main:
 	andl	$2048, %eax
 	testl	%eax, %eax
 	je	.L10
-	leaq	.LC3(%rip), %rax
+	leaq	.LC4(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
 	jmp	.L11
@@ -152,7 +159,7 @@ main:
 	andl	$2048, %eax
 	testl	%eax, %eax
 	jne	.L12
-	leaq	.LC4(%rip), %rax
+	leaq	.LC5(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
 	jmp	.L11
@@ -185,17 +192,17 @@ main:
 	andl	$2048, %eax
 	testl	%eax, %eax
 	je	.L13
-	leaq	.LC4(%rip), %rax
+	leaq	.LC5(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
 	jmp	.L11
 .L13:
-	leaq	.LC5(%rip), %rax
+	leaq	.LC6(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
 .L11:
 	movl	$0, %eax
-	jmp	.L8
+	jmp	.L7
 .L9:
 	cmpl	$4, -68(%rbp)
 	jne	.L14
@@ -472,19 +479,19 @@ main:
 	call	solve
 	jmp	.L18
 .L21:
-	leaq	.LC6(%rip), %rax
+	leaq	.LC7(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
 	jmp	.L14
 .L18:
 	jmp	.L14
 .L16:
-	leaq	.LC7(%rip), %rax
+	leaq	.LC8(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
 .L14:
 	movl	$0, %eax
-.L8:
+.L7:
 	leave
 	.cfi_def_cfa 7, 8
 	ret
